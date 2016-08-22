@@ -1,0 +1,22 @@
+#include "main.h"
+
+int main() {
+
+	/* initialization */
+	GPIO_Configuration(TX, RX);
+	USART_Configuration();
+	NVIC_Configuration();
+
+	char t = 'a';
+    char rs[50] = {'\0'};
+    char* prs = rs;
+	char a[]="sht on you,ponsheng.";
+
+	/* recive and send data */
+	SendData(USART1, a);
+
+	while(1);
+
+}
+
+void _init(void) {return;}

@@ -10,3 +10,4 @@ const uint16_t ctrl[4] = {GPIO_Pin_3, GPIO_Pin_5, GPIO_Pin_7, GPIO_Pin_8};
 
 void initgpio();
 void rotate();
+void delay(uint32_t time);

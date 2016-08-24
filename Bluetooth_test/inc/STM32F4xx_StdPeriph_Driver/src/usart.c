@@ -79,7 +79,7 @@ void NVIC_Configuration(){
 * Function Name  : SendData
 * Description    : Sending data  
 ******************************************************************/
-void SendData(USART_TypeDef *USARTx, volatile unsigned char str[])
+void SendData(USART_TypeDef *USARTx, volatile char str[])
 {
 	while(*str) {
 		while(USART_GetFlagStatus(USARTx, USART_FLAG_TXE) == RESET);

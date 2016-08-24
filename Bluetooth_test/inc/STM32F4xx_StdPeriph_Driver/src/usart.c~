@@ -95,7 +95,7 @@ void SendData(USART_TypeDef *USARTx, volatile unsigned char str[])
 void USART1_IRQHandler(void)
 {
 	if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET) {
-		USART_SendData(USART1, 'a'); 
+		SendData(USART1, "Interrupt trigger"); 
         USART_ClearITPendingBit(USART1, USART_IT_RXNE);
     }
 }

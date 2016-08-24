@@ -1,0 +1,61 @@
+#include "main.h"
+
+int main() {
+
+	/* initialization */
+	GPIO_Configuration(TX, RX);
+	USART_Configuration();
+	NVIC_Configuration();
+	init_motor_gpio();
+
+	char a[]="Hello, this is STM32F417.\n";
+	char b[]="Signal!";
+
+	/* recive and send data */
+	SendData(USART1, a);
+	while(1);
+
+}
+
+/*****************************************************************
+* Function Name  : init_motor_gpio
+* Description    : initial motor gpio pins
+******************************************************************/
+void init_motor_gpio() {
+
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+
+    GPIO_InitTypeDef gpio;
+    GPIO_StructInit(&gpio);
+    gpio.GPIO_Mode = GPIO_Mode_OUT;
+    gpio.GPIO_Pin = motor_out;
+	gpio.GPIO_Speed = GPIO_Speed_50MHz;
+    gpio.GPIO_OType = GPIO_OType_PP;
+	gpio.GPIO_PuPd = GPIO_PuPd_NOPULL;
+    GPIO_Init(GPIOB, &gpio);
+
+    gpio.GPIO_Mode = GPIO_Mode_IN;
+    gpio.GPIO_Pin = motor_in;
+	gpio.GPIO_Speed = GPIO_Speed_50MHz;
+    gpio.GPIO_PuPd = GPIO_PuPd_UP;
+    GPIO_Init(GPIOB, &gpio);
+}
+
+/*****************************************************************
+* Function Name  : rotate
+* Description    : motor_control
+******************************************************************/
+/*void rotate() {
+
+	char b[10];
+
+	*b = (char)GPIO_ReadInputDataBit(GPIOB, ctrl[3]);
+	SendData(USART1, b);
+
+}*/
+
+void delay(uint32_t time){
+	while(time--);
+}
+
+void _init(void) {return;}

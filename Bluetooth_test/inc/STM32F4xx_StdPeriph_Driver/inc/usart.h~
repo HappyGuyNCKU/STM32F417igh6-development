@@ -11,8 +11,8 @@
 #define MAX_STRLEN 50
 
 void GPIO_Configuration(uint16_t TX, uint16_t RX);
-//void USART_Configuration();
-//void NVIC_Configuration();
+void USART_Configuration();
+void NVIC_Configuration();
 
 void SendData(USART_TypeDef *USARTx, volatile unsigned char str[]);
 

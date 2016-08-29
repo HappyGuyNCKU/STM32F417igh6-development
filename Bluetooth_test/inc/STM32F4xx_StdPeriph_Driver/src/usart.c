@@ -81,7 +81,7 @@ void NVIC_Configuration(){
 ******************************************************************/
 void SendData(USART_TypeDef *USARTx, volatile char str[])
 {
-	while(*str) {
+	while(*str != '\0') {
 		while(USART_GetFlagStatus(USARTx, USART_FLAG_TXE) == RESET);
 		USART_SendData(USARTx, *str);
 		str++;
